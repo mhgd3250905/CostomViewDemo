@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -18,6 +19,10 @@ import android.view.View;
 */
 public class CostomView extends View {
     private Paint paint;
+    private int[] colors = new int[]{
+            Color.GREEN, Color.YELLOW, Color.RED, Color.BLUE, Color.WHITE, Color.GRAY
+    };
+    private Paint textPaint;
 
     public CostomView(Context context) {
         super(context);
@@ -38,9 +43,8 @@ public class CostomView extends View {
      * 初始化画笔
      */
     private void initPaint() {
-        paint=new Paint();
-        paint.setColor(Color.BLUE);
-        paint.setStyle(Paint.Style.STROKE);
+        paint = new Paint();
+
         paint.setStrokeWidth(10f);
         paint.setDither(true);
     }
@@ -57,22 +61,32 @@ public class CostomView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        float radius=Math.min(getMeasuredWidth()/2,getMeasuredHeight()/2)*2/3;
-        canvas.drawCircle(getMeasuredWidth()/2,getMeasuredHeight()/2, radius,paint);
-        for (int i = 0; i<12; i++) {
-            float startX= (float) (getMeasuredWidth()/2+(radius)*Math.cos((Math.PI/6)*i));
-            float startY= (float) (getMeasuredHeight()/2-(radius)*Math.sin((Math.PI/6)*i));
-            float endX= (float) (getMeasuredWidth()/2+(radius+50)*Math.cos((Math.PI/6)*i));
-            float endY= (float) (getMeasuredHeight()/2-(radius+50)*Math.sin((Math.PI/6)*i));
-            canvas.drawLine(startX,startY,endX,endY,paint );
-            for (int j = 0; j < 6; j++) {
-                float startX2= (float) (getMeasuredWidth()/2+(radius)*Math.cos((i*Math.PI/6+j*Math.PI/30)));
-                float startY2= (float) (getMeasuredHeight()/2-(radius)*Math.sin((i*Math.PI/6+j*Math.PI/30)));
-                float endX2= (float) (getMeasuredWidth()/2+(radius+20)*Math.cos((i*Math.PI/6+j*Math.PI/30)));
-                float endY2= (float) (getMeasuredHeight()/2-(radius+20)*Math.sin((i*Math.PI/6+j*Math.PI/30)));
-                canvas.drawLine(startX2,startY2,endX2,endY2,paint );
-            }
+        //设置半径
+        paint.setColor(Color.BLACK);
+        paint.setStyle(Paint.Style.STROKE);
+        float radius = Math.min(getMeasuredWidth() / 2, getMeasuredHeight() / 2) * 6 / 7;
+        //画圆
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, radius, paint);
+        //画12个锯齿
+        for (int i = 0; i < 6; i++) {
+            paint.setColor(colors[i]);
+            paint.setStyle(Paint.Style.FILL);
+            RectF rectF=new RectF(getMeasuredWidth()/2-radius,getMeasuredHeight()/2-radius,
+                    getMeasuredWidth()/2+radius,getMeasuredHeight()/2+radius);
+            canvas.drawArc(rectF,(60f)*i,(60f),true,paint);
+
+            textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            textPaint.setTextSize(70);
+            textPaint.setColor(Color.BLACK);
+
+            canvas.drawText(String.valueOf(i),
+                    (float)(getMeasuredWidth()/2+(radius/2)*Math.cos(i*Math.PI/3+Math.PI /6)-textPaint.measureText(String.valueOf(i)) / 2),
+                    (float)(getMeasuredHeight()/2+(radius/2)*Math.sin(i*Math.PI/3+Math.PI /6)-(textPaint.ascent()+textPaint.descent())/2),
+                    textPaint);
         }
-        canvas.drawCircle(getMeasuredWidth()/2,getMeasuredHeight()/2, radius+60,paint);
+        paint.setColor(Color.LTGRAY);
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, 50, paint);
     }
+
 }

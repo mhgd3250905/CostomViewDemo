@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ComboBox">
+        <attr name="title" format="string"/>
+        <attr name="checkedContent" format="string"/>
+        <attr name="unCheckContent" format="string"/>
+        <attr name="ischeck" format="boolean"/>
+    </declare-styleable>
+</resources>
