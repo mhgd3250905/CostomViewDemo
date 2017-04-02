@@ -2,11 +2,7 @@
 
 >这是学习自定义控件的第二个demo，这次的目的是实现一个简单的ScrollView，效果如下：
 
-<<<<<<< HEAD:自定义view之自定义ScrollView.md
 ![自定义ScrollView](img\customScrollView.gif)
-=======
-![效果](img/自定义控件之组合控件.gif)
->>>>>>> 6dd747a29b23665d668e3400f2899575b8f1d471:自定义view之自定义组合控件.md
 
 
 ### 1.初始化自定义控件
@@ -72,7 +68,6 @@ public class CostomScrollView extends ViewGroup {
             combo:ischeck="true"
             android:layout_width="match_parent"
             android:layout_height="100dp" />
-<<<<<<< HEAD:自定义view之自定义ScrollView.md
 
         <com.skkk.ww.costomviewdemo.ComboBox
             combo:title="测试一下吧"
@@ -81,77 +76,6 @@ public class CostomScrollView extends ViewGroup {
             combo:ischeck="true"
             android:layout_width="match_parent"
             android:layout_height="100dp" />
-=======
-</LinearLayout>  
-```
-其实这个时候运行项目就可以显示出自定义view了，但是我没什么都没有设置，所以只是一片空白；
-
-### 3.自定义view布局
-- 自定义view布局
-
-  ```xml
-  <?xml version="1.0" encoding="utf-8"?>
-  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal">
-
-      <LinearLayout
-          android:id="@+id/ll_left"
-          android:layout_weight="1"
-          android:layout_margin="5dp"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical">
-          <TextView
-              android:id="@+id/tv_title_cb"
-              android:text="Title"
-              android:textSize="30dp"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content" />
-
-          <TextView
-              android:id="@+id/tv_content_cb"
-              android:textSize="20dp"
-              android:text="Content"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content" />
-      </LinearLayout>
-
-      <CheckBox
-          android:id="@+id/cb_select_cb"
-          android:layout_marginRight="10dp"
-          android:layout_gravity="center"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent" />
-
-  </LinearLayout>
-  ```
-
-- 引用布局
-
-  ```java
-  private void initUI(Context context) {
-      LayoutInflater.from(context).inflate(R.layout.layout_combobox,this,true);
-      tvTitle= (TextView) findViewById(R.id.tv_title_cb);
-      tvContent= (TextView) findViewById(R.id.tv_content_cb);
-      cbCombo= (CheckBox) findViewById(R.id.cb_select_cb);
-      llLeft= (LinearLayout) findViewById(R.id.ll_left);
-  }
-  ```
-  当然```initUI```方法还需要加入到构造方法中，不然就没效果了。
-
-  ![效果](img/customView.png)
-
-### 4.自定义属性
-  >**通过以上的操作我们就可以得到一个像模像样的设置栏位了，当然，所有的属性我们都需要在java文件中修改，这不是我们想要的，我们如何才能向正常的控件一样在xml中定义各种属性呢？这就需要用的自定义属性了。**
-
-- 定义属性
-
-    1.首先我们需要新建一个文件```attrs.xml```,如下图所示：
-
-    ![attrs.xml](img/attrpath.png)
->>>>>>> 6dd747a29b23665d668e3400f2899575b8f1d471:自定义view之自定义组合控件.md
 
         <com.skkk.ww.costomviewdemo.ComboBox
             combo:title="测试一下吧"
@@ -182,16 +106,8 @@ public class CostomScrollView extends ViewGroup {
       }
   }
   ```
-<<<<<<< HEAD:自定义view之自定义ScrollView.md
 
 - 布局
-=======
-  这样我们可以在xml中定义我们的属性了，效果如下：
-
-  ![attr2](img/attr2.png)
-
-  ![attr3](img/attr3.png)
->>>>>>> 6dd747a29b23665d668e3400f2899575b8f1d471:自定义view之自定义组合控件.md
 
   **因为我们把所有的子view都设置为高度一致，所以如下进行布局**
   ```java
