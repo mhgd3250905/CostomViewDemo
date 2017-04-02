@@ -87,7 +87,7 @@ public class CostomScrollView extends ViewGroup {
 
     </com.skkk.ww.costomviewdemo.CostomScrollView>
 ```
-这里使用了我自定义的一个组合控件[CostomScrollView](img\自定义view之自定义组合控件.md)
+这里使用了我自定义的一个组合控件[自定义设置界面设置栏位](自定义view之自定义组合控件.md)
 
 **初始化很简单，但是需要注意的是我们通过```ViewConfiguration.get(context).getScaledTouchSlop()```方法来获取在可以被识别的最小滑动距离。**
 
