@@ -2,7 +2,7 @@
 
 >在app的应用设置中经常会有如下所示的设置样式，正好学习自定义view，下面我们就先实现一个；
 
-![效果](img\自定义控件之组合控件.gif)
+![效果](img\若水GIF截图_2017年3月24日22点14分41秒.gif)
 
 ### 1.开启新的自定义view
 ```java
@@ -99,7 +99,7 @@ public class ComboBox extends RelativeLayout{
   ```
   当然```initUI```方法还需要加入到构造方法中，不然就没效果了。
 
-  ![效果](img\customView.png)
+  ![效果](img\HW-1.png)
 
 ### 4.自定义属性
   >**通过以上的操作我们就可以得到一个像模像样的设置栏位了，当然，所有的属性我们都需要在java文件中修改，这不是我们想要的，我们如何才能向正常的控件一样在xml中定义各种属性呢？这就需要用的自定义属性了。**
@@ -108,7 +108,7 @@ public class ComboBox extends RelativeLayout{
 
     1.首先我们需要新建一个文件```attrs.xml```,如下图所示：
 
-    ![attrs.xml](img/attrpath.png)
+    ![attrs.xml](img\attrpath.png)
 
     2.然后具体定义属性内容：
     ```xml
@@ -194,9 +194,9 @@ public class ComboBox extends RelativeLayout{
   ```
   这样我们可以在xml中定义我们的属性了，效果如下：
 
-  ![attr2](img/attr2.png)
+  ![attr2](img\attr2.png)
 
-  ![attr3](img/attr3.png)
+  ![attr3](img\attr3.png)
 
 ### 5.自定义方法
 **能够在xml中设置属性还不够，我们还要在java代码中设置属性，接下来构造对应的设置方法**
