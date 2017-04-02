@@ -72,7 +72,7 @@ public class CostomScrollView extends ViewGroup {
             topBorder = getChildAt(1).getTop();
             bottomBorder = getChildAt(childCount - 1).getTop();
             childHeight = getChildAt(0).getHeight();
-            scrollTo(0,childHeight);
+            scrollTo(0,topBorder);
         }
     }
 
