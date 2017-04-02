@@ -2,7 +2,7 @@
 
 >这是学习自定义控件的第二个demo，这次的目的是实现一个简单的ScrollView，效果如下：
 
-![自定义ScrollView](img\customScrollView.gif)
+![自定义ScrollView](https://github.com/mhgd3250905/CostomViewDemo/blob/master/img/customScrollView.gif?raw=true)
 
 
 ### 1.初始化自定义控件
@@ -135,7 +135,7 @@ public class CostomScrollView extends ViewGroup {
 
   在布局完成之后我们运行项目就可以显示出效果了：
 
-  ![界面预览](img\costumScrollView.png)
+  ![界面预览](https://github.com/mhgd3250905/CostomViewDemo/blob/master/img/costumScrollView.png?raw=true)
 
 
 ### 3.触摸拦截
