@@ -72,6 +72,7 @@ public class RefreshLayout extends ViewGroup implements interfacePullToRefresh {
         headerHeight = getChildAt(0).getMeasuredHeight();
     }
 
+    //完成绘制后调用
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
@@ -79,16 +80,14 @@ public class RefreshLayout extends ViewGroup implements interfacePullToRefresh {
         recyclerView = (RecyclerView) getChildAt(1);
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-    }
 
+    //将事件拦截交由viewDragHelper处理
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         return viewDragHelper.shouldInterceptTouchEvent(ev);
     }
 
+    //将事件交由viewDragHelper处理
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         viewDragHelper.processTouchEvent(event);

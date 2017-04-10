@@ -5,8 +5,8 @@ package com.skkk.ww.costomviewdemo;
  */
 
 public interface interfacePullToRefresh {
-    void startRefreshing();
-    void doInRefreshing();
-    boolean isRefreshing();
-    void cancelRefresh();
+    void startRefreshing();//开始刷新
+    void doInRefreshing();//刷新过程中做...
+    boolean isRefreshing();//获取是否刷新
+    void cancelRefresh();//取消刷新
 }
