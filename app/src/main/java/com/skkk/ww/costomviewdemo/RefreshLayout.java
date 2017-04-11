@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 * 作    者：ksheng
 * 时    间：2017/4/2$ 21:37$.
 */
-public class RefreshLayout extends ViewGroup implements interfacePullToRefresh {
+public class RefreshLayout extends ViewGroup implements pullToRefreshAble {
     private ViewDragHelper viewDragHelper;
     private HeaderView headerView;
     private RecyclerView recyclerView;
@@ -38,25 +38,26 @@ public class RefreshLayout extends ViewGroup implements interfacePullToRefresh {
 
     public RefreshLayout(Context context) {
         super(context);
-        mInit();
+        mInit(context);
     }
 
     public RefreshLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mInit();
+        mInit(context);
     }
 
     public RefreshLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mInit();
+        mInit(context);
     }
 
     /**
      * 设置LinearLayout布局方向
      * 初始化viewDragHelper
      */
-    private void mInit() {
+    private void mInit(Context context) {
         viewDragHelper = ViewDragHelper.create(this, callback);
+        addHeaderView(context);
     }
 
     @Override
@@ -228,6 +229,19 @@ public class RefreshLayout extends ViewGroup implements interfacePullToRefresh {
         if (viewDragHelper.continueSettling(true)) {
             ViewCompat.postInvalidateOnAnimation(this);
         }
+    }
+
+
+    @Override
+    public void addHeaderView(Context context) {
+        HeaderView headerView=new HeaderView(context);
+        headerView.setTextPull("下拉刷新...");
+        headerView.setTextReady("松开刷新...");
+        headerView.setTextRelease("即将刷新...");
+        headerView.setTextRefresh("正在刷新...");
+        LayoutParams layoutParams=new ViewGroup.MarginLayoutParams(LayoutParams.MATCH_PARENT,350);
+        headerView.setLayoutParams(layoutParams);
+        addView(headerView,0);
     }
 
     public void startRefreshing() {

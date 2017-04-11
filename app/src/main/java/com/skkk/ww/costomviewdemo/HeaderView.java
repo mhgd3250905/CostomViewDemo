@@ -118,4 +118,36 @@ public class HeaderView extends LinearLayout{
     public int getAnimState() {
         return animState;
     }
+
+    public String getTextPull() {
+        return textPull;
+    }
+
+    public void setTextPull(String textPull) {
+        this.textPull = textPull;
+    }
+
+    public String getTextReady() {
+        return textReady;
+    }
+
+    public void setTextReady(String textReady) {
+        this.textReady = textReady;
+    }
+
+    public String getTextRefresh() {
+        return textRefresh;
+    }
+
+    public void setTextRefresh(String textRefresh) {
+        this.textRefresh = textRefresh;
+    }
+
+    public String getTextRelease() {
+        return textRelease;
+    }
+
+    public void setTextRelease(String textRelease) {
+        this.textRelease = textRelease;
+    }
 }
