@@ -87,6 +87,7 @@ public class HeaderView extends LinearLayout{
     public void setRefreshStatus(int statusRefresh) {
         switch (statusRefresh){
             case NORMAL://当整个header全部收起来
+                ivHeader.animate().rotation(0);
                 break;
             case PULL://当我们向下开始拖动但header还没有全部露出来
                 tvHeader.setText(textPull);

@@ -21,20 +21,20 @@ import android.view.ViewGroup;
 */
 public class RefreshLayout extends ViewGroup implements pullToRefreshAble {
     private ViewDragHelper viewDragHelper;
-    private HeaderView headerView;
     private RecyclerView recyclerView;
     private int headerHeight;
     private boolean isRelease = true;//Flag：是否松开手指
+    private HeaderView headerView;
 
+    //刷新事件
     public interface OnHeaderRefreshListener {
         void onRefreshListener();
     }
-
     private OnHeaderRefreshListener onHeaderRefreshListener;
-
     public void setOnHeaderRefreshListener(OnHeaderRefreshListener onHeaderRefreshListener) {
         this.onHeaderRefreshListener = onHeaderRefreshListener;
     }
+
 
     public RefreshLayout(Context context) {
         super(context);
@@ -55,9 +55,20 @@ public class RefreshLayout extends ViewGroup implements pullToRefreshAble {
      * 设置LinearLayout布局方向
      * 初始化viewDragHelper
      */
-    private void mInit(Context context) {
+    private void mInit(Context context){
         viewDragHelper = ViewDragHelper.create(this, callback);
-        addHeaderView(context);
+        addView(setHeaderView(context), 0);
+    }
+
+    public ViewGroup setHeaderView(Context context){
+        headerView = new HeaderView(context);
+        headerView.setTextPull("下拉刷新...");
+        headerView.setTextReady("松开刷新...");
+        headerView.setTextRelease("即将刷新...");
+        headerView.setTextRefresh("正在刷新...");
+        LayoutParams layoutParams=new ViewGroup.MarginLayoutParams(LayoutParams.MATCH_PARENT,350);
+        headerView.setLayoutParams(layoutParams);
+        return headerView;
     }
 
     @Override
@@ -231,18 +242,6 @@ public class RefreshLayout extends ViewGroup implements pullToRefreshAble {
         }
     }
 
-
-    @Override
-    public void addHeaderView(Context context) {
-        HeaderView headerView=new HeaderView(context);
-        headerView.setTextPull("下拉刷新...");
-        headerView.setTextReady("松开刷新...");
-        headerView.setTextRelease("即将刷新...");
-        headerView.setTextRefresh("正在刷新...");
-        LayoutParams layoutParams=new ViewGroup.MarginLayoutParams(LayoutParams.MATCH_PARENT,350);
-        headerView.setLayoutParams(layoutParams);
-        addView(headerView,0);
-    }
 
     public void startRefreshing() {
         if (isRefreshing()) {

@@ -140,6 +140,7 @@ public class HeaderView extends LinearLayout{
     public void setRefreshStatus(int statusRefresh) {
         switch (statusRefresh){
             case NORMAL://当整个header全部收起来
+              ivHeader.animate().rotation(0);
                 break;
             case PULL://当我们向下开始拖动但header还没有全部露出来
                 tvHeader.setText(textPull);
@@ -225,6 +226,21 @@ ivHeader.animate().rotation(180).setDuration(500);
             android:layout_height="match_parent"/>
     </com.skkk.ww.costomviewdemo.RefreshLayout>
 </LinearLayout>
+```
+
+为了让我们能够达到构思图的样子HeaderView在上方隐藏起来我们需要这样布局：
+```java
+@Override
+protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    measureChildren(widthMeasureSpec, heightMeasureSpec);
+}
+@Override
+protected void onLayout(boolean changed, int l, int t, int r, int b) {
+    recyclerView.layout(l, t, r, b);
+    headerView.layout(l, t - getChildAt(0).getMeasuredHeight(), r, t);
+    headerHeight = getChildAt(0).getMeasuredHeight();
+}
 ```
 
 这里其实是下拉刷新的核心控件，而核心中的核心就是下拉这个操作了，在上一篇自定义学习[自定义ScrollView](自定义view之自定义scrollView.md)中，我们使用Scroller来完成对View的拖动，这一次我选择了```ViewDragHelper```,```ViewDragHelper```的使用很简单，但大多数情况下我们需要做一些模板化的操作：

@@ -9,17 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<com.skkk.ww.costomviewdemo.HeaderView-->
-            <!--android:id="@+id/hv_header"-->
-            <!--header:status="pull"-->
-            <!--header:pullText="下拉刷新..."-->
-            <!--header:readyText="松开刷新..."-->
-            <!--header:releaseText="即将刷新..."-->
-            <!--header:refreshText="正在刷新..."-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="100dp"-->
-            <!--&gt;</com.skkk.ww.costomviewdemo.HeaderView>-->
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_header"
             android:layout_width="match_parent"

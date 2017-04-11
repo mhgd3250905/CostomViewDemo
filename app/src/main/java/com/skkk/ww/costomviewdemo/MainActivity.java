@@ -1,13 +1,17 @@
 package com.skkk.ww.costomviewdemo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         refreshLayout = (RefreshLayout) findViewById(R.id.hl);
         rvHeader= (RecyclerView) findViewById(R.id.rv_header);
+        rvHeader.setItemAnimator(new DefaultItemAnimator());
         rvHeader.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         mDataList=new ArrayList<>();
         for (int i = 0; i < 20; i++) {
@@ -38,11 +43,19 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new HeaderAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(View view, int pos) {
-                if (refreshLayout.isRefreshing()){
-                    refreshLayout.cancelRefresh();
-                }else {
-                    refreshLayout.startRefreshing();
-                }
+
+//                if (refreshLayout.isRefreshing()){
+//                    refreshLayout.cancelRefresh();
+//                }else {
+//                    refreshLayout.startRefreshing();
+//                }
+                startActivity(new Intent(MainActivity.this,Main2Activity.class));
+            }
+
+            @Override
+            public void onDragButtonClickListener(View view, int pos) {
+                mDataList.remove(pos);
+                adapter.notifyItemRemoved(pos);
             }
         });
 
@@ -74,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         public OnItemClickListener onItemClickListener;
         public interface OnItemClickListener{
             void onItemClickListener(View view,int pos);
+            void onDragButtonClickListener(View view,int pos);
         }
 
         public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
@@ -96,11 +110,18 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(MyViewHolder holder, final int position) {
             holder.tvItem.setText(dataList.get(position));
             if (onItemClickListener!=null){
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                holder.llShow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         int pos=position;
                         onItemClickListener.onItemClickListener(v,pos);
+                    }
+                });
+                holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int pos=position;
+                        onItemClickListener.onDragButtonClickListener(v,pos);
                     }
                 });
             }
@@ -113,10 +134,16 @@ public class MainActivity extends AppCompatActivity {
 
         class MyViewHolder extends RecyclerView.ViewHolder{
             private TextView tvItem;
+            private LinearLayout llShow;
+            private LinearLayout llHide;
+            private ImageView ivDelete;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
                 tvItem= (TextView) itemView.findViewById(R.id.tv_item);
+                llShow= (LinearLayout) itemView.findViewById(R.id.ll_show);
+                llHide= (LinearLayout) itemView.findViewById(R.id.ll_hide);
+                ivDelete= (ImageView) itemView.findViewById(R.id.iv_delete);
             }
         }
     }
