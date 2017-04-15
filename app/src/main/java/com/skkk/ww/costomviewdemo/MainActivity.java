@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDragButtonClickListener(View view, int pos) {
                 mDataList.remove(pos);
                 adapter.notifyItemRemoved(pos);
+                adapter.notifyItemRangeChanged(0,adapter.getItemCount());
             }
         });
 

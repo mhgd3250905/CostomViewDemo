@@ -1,8 +1,10 @@
 package com.skkk.ww.costomviewdemo;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,6 +28,9 @@ public class DragItemView extends ViewGroup {
     private int maxWidth;//可以拖拽的最大距离
     private int leftBorder;
     private boolean dragToRight;//是否向右拖动
+    private boolean mIsMoving;//是否正在拖动
+
+    private RecyclerView rv;
 
     public DragItemView(Context context) {
         super(context);
@@ -35,6 +40,9 @@ public class DragItemView extends ViewGroup {
     public DragItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mInit();
+
+        TypedArray ta=context.obtainStyledAttributes(attrs,R.styleable.DragItemView);
+
     }
 
     public DragItemView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -59,6 +67,7 @@ public class DragItemView extends ViewGroup {
             getChildAt(1).layout(l, t, r, b);
             maxWidth = llShow.getMeasuredWidth() / 2;
             leftBorder = llShow.getLeft();
+            rv = (RecyclerView) getParent().getParent();
         }
     }
 
@@ -70,6 +79,7 @@ public class DragItemView extends ViewGroup {
     }
 
     private ViewDragHelper.Callback callback = new ViewDragHelper.Callback() {
+
         @Override
         public boolean tryCaptureView(View child, int pointerId) {
             return child == llShow;
@@ -91,6 +101,12 @@ public class DragItemView extends ViewGroup {
         }
 
         @Override
+        public void onViewCaptured(View capturedChild, int activePointerId) {
+            super.onViewCaptured(capturedChild, activePointerId);
+            mIsMoving=true;
+        }
+
+        @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             super.onViewReleased(releasedChild, xvel, yvel);
             if (releasedChild.getLeft() < (leftBorder + maxWidth / 3)) {
@@ -104,6 +120,8 @@ public class DragItemView extends ViewGroup {
                 }
             }
             ViewCompat.postInvalidateOnAnimation(DragItemView.this);
+            mIsMoving=false;
+
         }
 
         @Override
@@ -114,14 +132,19 @@ public class DragItemView extends ViewGroup {
             } else if (dx < 0) {
                 dragToRight = false;
             }
+            if (mIsMoving) {
+                rv.setLayoutFrozen(true);
+            }else{
+                rv.setLayoutFrozen(false);
+            }
         }
 
         @Override
         public int getViewHorizontalDragRange(View child) {
             return 1;
         }
-    };
 
+    };
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
@@ -140,5 +163,4 @@ public class DragItemView extends ViewGroup {
             ViewCompat.postInvalidateOnAnimation(this);
         }
     }
-
 }

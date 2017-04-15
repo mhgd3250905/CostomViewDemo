@@ -20,6 +20,12 @@
             <enum name="release" value="3"/>
             <enum name="refreshing" value="4"/>
         </attr>
+    </declare-styleable>
 
+    <declare-styleable name="DragItemView">
+        <attr name="dragStyle" format="enum">
+            <enum name="dragTransparent" value="0"/>
+            <enum name="dragShowButton" value="1"/>
+        </attr>
     </declare-styleable>
 </resources>
