@@ -41,7 +41,7 @@ public class DragItemView extends ViewGroup {
         super(context, attrs);
         mInit();
 
-        TypedArray ta=context.obtainStyledAttributes(attrs,R.styleable.DragItemView);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.DragItemView);
 
     }
 
@@ -67,7 +67,9 @@ public class DragItemView extends ViewGroup {
             getChildAt(1).layout(l, t, r, b);
             maxWidth = llShow.getMeasuredWidth() / 2;
             leftBorder = llShow.getLeft();
-            rv = (RecyclerView) getParent().getParent();
+            if (getParent().getParent() instanceof RecyclerView) {
+                rv = (RecyclerView) getParent().getParent();
+            }
         }
     }
 
@@ -103,7 +105,7 @@ public class DragItemView extends ViewGroup {
         @Override
         public void onViewCaptured(View capturedChild, int activePointerId) {
             super.onViewCaptured(capturedChild, activePointerId);
-            mIsMoving=true;
+            mIsMoving = true;
         }
 
         @Override
@@ -120,7 +122,7 @@ public class DragItemView extends ViewGroup {
                 }
             }
             ViewCompat.postInvalidateOnAnimation(DragItemView.this);
-            mIsMoving=false;
+            mIsMoving = false;
 
         }
 
@@ -132,9 +134,9 @@ public class DragItemView extends ViewGroup {
             } else if (dx < 0) {
                 dragToRight = false;
             }
-            if (mIsMoving) {
+            if (mIsMoving && rv != null) {
                 rv.setLayoutFrozen(true);
-            }else{
+            } else if(!mIsMoving && rv != null){
                 rv.setLayoutFrozen(false);
             }
         }

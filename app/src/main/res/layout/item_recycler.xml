@@ -7,6 +7,7 @@
         android:background="#55000000"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/ll_hide"
             android:layout_width="match_parent"
