@@ -9,6 +9,7 @@
 >我们在上一次的自定义下拉刷新使用了可以实现拖动效果的```ViewDragHelper```，这次我们依然使用这个辅助工具
 
 思考一下实现的思路：
+
 ![效果](https://github.com/mhgd3250905/CostomViewDemo/blob/master/img/drapItem_1.png?raw=true)
 
 上面就是具体实现的样式：

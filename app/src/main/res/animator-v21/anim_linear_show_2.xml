@@ -4,5 +4,6 @@
     android:valueFrom="0"
     android:valueTo="1"
     android:valueType="floatType"
-    android:duration="1"
+    android:duration="1000"
+    android:startOffset="1000"
     android:interpolator="@android:anim/linear_interpolator"/>

@@ -4,4 +4,4 @@
     android:valueFrom="0"
     android:valueTo="0"
     android:valueType="floatType"
-    android:duration="1" />
+    android:duration="0" />

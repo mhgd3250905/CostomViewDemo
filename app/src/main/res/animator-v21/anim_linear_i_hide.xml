@@ -5,5 +5,5 @@
     android:valueTo="1"
     android:valueType="floatType"
     android:duration="1000"
-    android:startOffset="2000"
+    android:startOffset="3000"
     android:interpolator="@android:anim/linear_interpolator"/>

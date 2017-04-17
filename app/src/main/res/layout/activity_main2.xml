@@ -4,10 +4,7 @@
     android:id="@+id/activity_main2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="com.skkk.ww.costomviewdemo.Main2Activity">
 
     <com.skkk.ww.costomviewdemo.DragItemView
@@ -15,18 +12,6 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/ll_hide"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_gravity="left|center_vertical"
-                android:src="@mipmap/ic_launcher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:background="#fff"
             android:id="@+id/ll_show"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -36,6 +21,18 @@
                 android:text="This is a Item!"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="#fff"
+            android:id="@+id/ll_hide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_vector"
+                android:layout_gravity="left|center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </com.skkk.ww.costomviewdemo.DragItemView>
 

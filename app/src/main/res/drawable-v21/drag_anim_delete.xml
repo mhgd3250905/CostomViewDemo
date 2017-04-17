@@ -47,7 +47,50 @@
         android:name="line_i_3"
         android:animation="@animator/anim_default_hide" />
 
+    <!--初始状态-->
+    <target
+        android:name="line_l_1"
+        android:animation="@animator/anim_linear_hide_1" />
+    <target
+        android:name="line_r_1"
+        android:animation="@animator/anim_linear_hide_1" />
 
+    <target
+        android:name="line_l_2"
+        android:animation="@animator/anim_linear_show_1" />
+    <target
+        android:name="line_r_2"
+        android:animation="@animator/anim_linear_show_1" />
 
+    <target
+        android:name="line_l_3"
+        android:animation="@animator/anim_linear_show_2" />
+    <target
+        android:name="line_r_3"
+        android:animation="@animator/anim_linear_show_2" />
+
+    <target
+        android:name="line_l_2"
+        android:animation="@animator/anim_linear_hide_2" />
+    <target
+        android:name="line_r_2"
+        android:animation="@animator/anim_linear_hide_2" />
+
+    <target
+        android:name="line_l_4"
+        android:animation="@animator/anim_linear_show_3" />
+    <target
+        android:name="line_r_4"
+        android:animation="@animator/anim_linear_show_3" />
+
+    <target
+        android:name="line_i_1"
+        android:animation="@animator/anim_linear_i_show" />
+    <target
+        android:name="line_i_2"
+        android:animation="@animator/anim_linear_i_show" />
+    <target
+        android:name="line_i_3"
+        android:animation="@animator/anim_linear_i_show" />
 
 </animated-vector>

@@ -1,4 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android">
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="800dp"
+    android:height="100dp"
+    android:viewportHeight="100"
+    android:viewportWidth="800">
+
+    <!--左边第一部分-->
+    <path android:name="line_l_1"
+        android:pathData="M800,100 L200,100"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+    <path android:name="line_l_2"
+        android:pathData="M200,100 L200,0 100,0 100,10"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+    <path android:name="line_l_3"
+        android:pathData="M100,10 L125,10 125,20 100,20 100,30 150,30"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+    <path android:name="line_l_4"
+        android:pathData="M140,30 L140,90 100,90"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+    <!--右边第一部分-->
+    <path android:name="line_r_1"
+        android:pathData="M200,100 L0,100"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+    <path android:name="line_r_2"
+        android:pathData="M0,100 L0,0 100,0 100,10"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+    <path android:name="line_r_3"
+        android:pathData="M100,10 L75,10 75,20 100,20 100,30 50,30"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+    <path android:name="line_r_4"
+        android:pathData="M60,30 L60,90 100,90"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+    <!--第三部分-->
+    <path android:name="line_i_1"
+        android:pathData="M100,40 L100,80"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+    <path android:name="line_i_2"
+        android:pathData="M80,40 L80,80"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+    <path android:name="line_i_3"
+        android:pathData="M120,40 L120,80"
+        android:strokeWidth="5"
+        android:strokeLineCap="square"
+        android:strokeColor="@color/colorAccent"
+        android:strokeAlpha="1"/>
+
+
 
 </vector>
