@@ -20,18 +20,16 @@ import Utils.BounceUtils;
  * Created by admin on 2017/4/18.
  */
 /*
-* 
-* 描    述：有贝塞尔球特效的View
+*
+* 描    述：有弹簧特效的View
 * 作    者：ksheng
 * 时    间：2017/4/18$ 20:40$.
 */
 public class DragBounceItem extends View {
 
-    private float radius;//半径
     private PointF centerP;//圆心点
     private Paint paintCircle;//画笔
     private PointF lastP;
-    private PointF currentP;
     private float width, height, offsetX, offsetY;
 
 
@@ -58,10 +56,7 @@ public class DragBounceItem extends View {
         paintCircle.setDither(true);
         paintCircle.setAntiAlias(true);
 
-        radius = 200f;
-
         lastP = new PointF(0, 0);
-        currentP = new PointF(0, 0);
     }
 
     @Override
