@@ -1,5 +1,6 @@
 package com.skkk.ww.costomviewdemo;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ public class Main2Activity extends AppCompatActivity {
     private ImageView ivVector;
     private AnimatedVectorDrawable animDelete;
     private AnimatedVectorDrawable animNormal;
+    private boolean animStart=true;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -30,8 +32,13 @@ public class Main2Activity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                ivVector.setImageDrawable(animDelete);
-                animDelete.start();
+                if (animStart) {
+                    ivVector.setImageDrawable(animDelete);
+                    animDelete.start();
+                    animStart=false;
+                }else {
+                    startActivity(new Intent(Main2Activity.this,Main3Activity.class));
+                }
             }
         });
 

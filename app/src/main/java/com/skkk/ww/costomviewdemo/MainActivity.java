@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import Utils.BounceUtils;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG=this.getClass().getSimpleName();
@@ -28,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_header_main);
+
+        float[] bounceNum = BounceUtils.getBounceNum(100, 20);
+        for (int i = 0; i < bounceNum.length; i++) {
+            Log.d("MainActivity", "bounceNum[i]:" + bounceNum[i]);
+        }
 
         refreshLayout = (RefreshLayout) findViewById(R.id.hl);
         rvHeader= (RecyclerView) findViewById(R.id.rv_header);
