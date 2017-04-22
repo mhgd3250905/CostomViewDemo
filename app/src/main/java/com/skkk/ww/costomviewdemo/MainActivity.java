@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -126,13 +125,6 @@ public class MainActivity extends AppCompatActivity {
                         onItemClickListener.onItemClickListener(v,pos);
                     }
                 });
-                holder.ivDelete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        int pos=position;
-                        onItemClickListener.onDragButtonClickListener(v,pos);
-                    }
-                });
             }
         }
 
@@ -145,14 +137,12 @@ public class MainActivity extends AppCompatActivity {
             private TextView tvItem;
             private LinearLayout llShow;
             private LinearLayout llHide;
-            private ImageView ivDelete;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
                 tvItem= (TextView) itemView.findViewById(R.id.tv_item);
                 llShow= (LinearLayout) itemView.findViewById(R.id.ll_show);
                 llHide= (LinearLayout) itemView.findViewById(R.id.ll_hide);
-                ivDelete= (ImageView) itemView.findViewById(R.id.iv_delete);
             }
         }
     }

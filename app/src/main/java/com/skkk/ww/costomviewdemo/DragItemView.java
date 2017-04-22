@@ -31,6 +31,7 @@ public class DragItemView extends ViewGroup {
     private boolean mIsMoving;//是否正在拖动
 
     private RecyclerView rv;
+    private DragBounceItem bounceItem;
 
     public DragItemView(Context context) {
         super(context);
@@ -77,6 +78,13 @@ public class DragItemView extends ViewGroup {
     protected void onFinishInflate() {
         super.onFinishInflate();
         llHide = (LinearLayout) getChildAt(0);
+        try {
+            bounceItem = (DragBounceItem) llHide.getChildAt(0);
+        }catch (ClassCastException e){
+            bounceItem=null;
+            e.printStackTrace();
+        }
+
         llShow = (LinearLayout) getChildAt(1);
     }
 
@@ -134,6 +142,18 @@ public class DragItemView extends ViewGroup {
             } else if (dx < 0) {
                 dragToRight = false;
             }
+
+            if (bounceItem!=null){
+                if (left>0&&left<=maxWidth/2){
+                    bounceItem.centerMove(left);
+                }else if (left>maxWidth/2&&left<maxWidth){
+                    bounceItem.centerMove(maxWidth/2);
+                    bounceItem.bounceOffsetMove(dx);
+                }else if (left>=maxWidth){
+                    bounceItem.startBounceAnim();
+                }
+            }
+
             if (mIsMoving && rv != null) {
                 rv.setLayoutFrozen(true);
             } else if(!mIsMoving && rv != null){

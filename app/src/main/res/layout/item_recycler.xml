@@ -4,21 +4,15 @@
     android:layout_height="100dp">
 
     <com.skkk.ww.costomviewdemo.DragItemView
-        android:background="#55000000"
+        android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:background="#22000000"
             android:id="@+id/ll_hide"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView
-                android:visibility="gone"
-                android:id="@+id/iv_delete"
-                android:src="@drawable/vector_delete"
-                android:text="DELETE"
-                android:layout_width="60dp"
-                android:layout_height="match_parent" />
             <com.skkk.ww.costomviewdemo.DragBounceItem
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
